@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MemoryGameView.swift
 //  Memorize
 //
 //  Created by 赵彦琦 on 2020/7/10.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MemoryGameView: View {
     // 视图拥有一个视图模型实例
     // 添加观察
     @ObservedObject var viewModel: MemoryGameViewModel
@@ -51,8 +51,8 @@ struct CardView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MemoryGameView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: MemoryGameViewModel())
+        MemoryGameView(viewModel: MemoryGameViewModel())
     }
 }
