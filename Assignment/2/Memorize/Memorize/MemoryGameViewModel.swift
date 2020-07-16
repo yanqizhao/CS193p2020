@@ -14,7 +14,7 @@ class MemoryGameViewModel {
     private var model: MemoryGameModel<String> = MemoryGameViewModel.createMemoryGameModel()
     
     static func createMemoryGameModel() -> MemoryGameModel<String> {
-        let emojis = ["👻", "🎃", "🙂", "🤯", "🐱"]
+        let emojis = ["👻", "🎃", "🙂", "🤯", "🐱", "🦄", "🍀", "🍤", "🍭", "🎂", "🍰", "🍺"].shuffled()
         return MemoryGameModel<String>(numberOfPairsOfCards: Int.random(in: 2...5)) {
             pairIndex in
             return emojis[pairIndex]
@@ -22,7 +22,7 @@ class MemoryGameViewModel {
     }
     
     var cards: Array<MemoryGameModel<String>.Card> {
-        model.cards
+        model.cards.shuffled()
     }
     
     func choose(card: MemoryGameModel<String>.Card) {
