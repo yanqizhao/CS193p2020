@@ -13,18 +13,28 @@ struct MemoryGameView: View {
     // 添加观察
     @ObservedObject var viewModel: MemoryGameViewModel
     
+    var themeLabel: Text {
+        return Text(viewModel.theme.name + " Theme")
+    }
+    
+    var pointLabel: Text {
+        return Text(String(viewModel.points))
+    }
+    
     var body: some View {
-        Grid(viewModel.cards) { card in
-            CardView(card: card).onTapGesture {
-                self.viewModel.choose(card: card)
+        VStack() {
+            self.themeLabel
+            self.pointLabel
+            Grid(viewModel.cards) { card in
+                CardView(card: card).onTapGesture {
+                    self.viewModel.choose(card: card)
+                }
             }
+            // 内边距
+            .padding()
+            // 前景色(包括字体颜色)
+            .foregroundColor(viewModel.theme.color)
         }
-        // 内边距
-        .padding()
-        // 前景色(包括字体颜色)
-        .foregroundColor(Color.orange)
-        // 字体加大
-//        .font(viewModel.cards.count == 10 ? nil : Font.largeTitle)
     }
 }
 

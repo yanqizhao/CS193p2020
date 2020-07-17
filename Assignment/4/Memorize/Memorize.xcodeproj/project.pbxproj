@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B4050A9C24C1AD77004C16C3 /* HostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4050A9B24C1AD77004C16C3 /* HostView.swift */; };
 		B44F5C7B24C068CC000FBB02 /* Arrary+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F5C7A24C068CC000FBB02 /* Arrary+Identifiable.swift */; };
 		B44F5C7D24C06DB0000FBB02 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F5C7C24C06DB0000FBB02 /* Grid.swift */; };
 		B44F5C7F24C07B4A000FBB02 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F5C7E24C07B4A000FBB02 /* GridLayout.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B4050A9B24C1AD77004C16C3 /* HostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostView.swift; sourceTree = "<group>"; };
 		B44F5C7A24C068CC000FBB02 /* Arrary+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Arrary+Identifiable.swift"; sourceTree = "<group>"; };
 		B44F5C7C24C06DB0000FBB02 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		B44F5C7E24C07B4A000FBB02 /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridLayout.swift; path = ../../../../Slide/P4/GridLayout.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			children = (
 				B46E820C24B85D48009FC009 /* AppDelegate.swift */,
 				B46E820E24B85D48009FC009 /* SceneDelegate.swift */,
+				B4050A9B24C1AD77004C16C3 /* HostView.swift */,
 				B44F5C7A24C068CC000FBB02 /* Arrary+Identifiable.swift */,
 				B44F5C8024C15DC2000FBB02 /* Array+Only.swift */,
 				B44F5C7C24C06DB0000FBB02 /* Grid.swift */,
@@ -170,6 +173,7 @@
 				B44F5C8124C15DC2000FBB02 /* Array+Only.swift in Sources */,
 				B46E820F24B85D48009FC009 /* SceneDelegate.swift in Sources */,
 				B44F5C7B24C068CC000FBB02 /* Arrary+Identifiable.swift in Sources */,
+				B4050A9C24C1AD77004C16C3 /* HostView.swift in Sources */,
 				B44F5C7D24C06DB0000FBB02 /* Grid.swift in Sources */,
 				B46E821124B85D48009FC009 /* MemoryGameView.swift in Sources */,
 				B44F5C7F24C07B4A000FBB02 /* GridLayout.swift in Sources */,

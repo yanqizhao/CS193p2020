@@ -16,19 +16,39 @@ class MemoryGameViewModel: ObservableObject {
     @Published private var model: MemoryGameModel<String> = MemoryGameViewModel.createMemoryGameModel()
     
     static func createMemoryGameModel() -> MemoryGameModel<String> {
-        let emojis = ["👻", "🎃", "🙂", "🤯", "🐱", "🦄", "🍀", "🍤", "🍭", "🎂", "🍰", "🍺"].shuffled()
-        return MemoryGameModel<String>(numberOfPairsOfCards: Int.random(in: 2...5)) {
-            pairIndex in
-            return emojis[pairIndex]
-        }
+        let opacity = 0.7
+        
+        let themes: [MemoryGameModel<String>.Theme] =
+            [MemoryGameModel.Theme(name: Themes.Halloween.rawValue, color: Color.orange, contents: ["👻", "🎃", "🍬", "☠️", "😈"]),
+             MemoryGameModel.Theme(name: Themes.Animal.rawValue, color: Color.green.opacity(opacity), contents: ["🐱", "🦄", "🦊", "🐒", "🐠"]),
+             MemoryGameModel.Theme(name: Themes.Plant.rawValue, color: Color.purple.opacity(opacity), contents: ["🌸", "🍀", "🌿", "🌱", "🍁"]),
+             MemoryGameModel.Theme(name: Themes.Face.rawValue, color: Color.red.opacity(opacity), contents: ["🙂", "🤯", "🥶", "🤔", "😬"]),
+             MemoryGameModel.Theme(name: Themes.Food.rawValue, color: Color.yellow.opacity(opacity), contents: ["🍤", "🍭", "🎂", "🍰", "🍺"]),
+             MemoryGameModel.Theme(name: Themes.Weather.rawValue, color: Color.blue.opacity(opacity), contents: ["☀️", "🌤", "🌦", "⛈", "☃️"])].shuffled()
+
+        let theme = themes.first!
+        
+        return MemoryGameModel<String>(theme: theme)
     }
     
     var cards: Array<MemoryGameModel<String>.Card> {
         model.cards
     }
     
+    var theme: MemoryGameModel<String>.Theme {
+        model.theme
+    }
+    
+    var points: Int {
+        model.points
+    }
+    
     func choose(card: MemoryGameModel<String>.Card) {
         model.choose(card: card)
+    }
+    
+    enum Themes: String {
+        case Halloween, Animal, Plant, Face, Food, Weather
     }
 }
 
