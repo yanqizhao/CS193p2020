@@ -9,9 +9,9 @@
 import Foundation
 
 struct MemoryGame<CardContent> where CardContent: Equatable {
-    var cards: Array<Card>
+    private(set) var cards: Array<Card>
     
-    var indexOfTheOneAndOnlyFaceUpCard: Int? {
+    private var indexOfTheOneAndOnlyFaceUpCard: Int? {
         get { cards.indices.filter { cards[$0].isFaceUp }.only }
         set {
             for index in cards.indices {
@@ -46,6 +46,8 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         }
     }
     
+    // 无需设置访问控制，唯一可能被访问的地方已经设置为只读变量
+    // private(set) var cards: Array<Card>
     struct Card: Identifiable {
         var isFaceUp: Bool = false
         var isMatched: Bool = false

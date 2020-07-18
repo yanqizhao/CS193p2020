@@ -9,8 +9,10 @@
 import SwiftUI
 
 struct EmojiMemoryGameView: View {
+    // 不能添加访问控制，创建 EmojiMemoryGameView 时需要初始化 viewModel
     @ObservedObject var viewModel: EmojiMemoryGame
     
+    // 不能添加访问控制，系统会调用
     var body: some View {
         // 引用类型可能造成循环引用，但 self 是值类型
         Grid(viewModel.cards) { card in
@@ -25,15 +27,17 @@ struct EmojiMemoryGameView: View {
 }
 
 struct CardView: View {
+    // 不能添加访问控制，创建 CardView 时需要初始化 card
     var card : MemoryGame<String>.Card
     
+    // 不能添加访问控制，系统会调用
     var body: some View {
         GeometryReader { geometry in
             self.body(for: geometry.size)
         }
     }
     
-    func body(for size: CGSize) -> some View {
+    private func body(for size: CGSize) -> some View {
         ZStack() {
             if card.isFaceUp {
                 RoundedRectangle(cornerRadius: cornerRadius).fill(Color.white)
@@ -50,11 +54,11 @@ struct CardView: View {
     }
     
     // MARK: - 常量
-    let cornerRadius: CGFloat = 10.0
-    let edgeLineWidth: CGFloat = 3
-    let fontScaleFactor: CGFloat = 0.75
+    private let cornerRadius: CGFloat = 10.0
+    private let edgeLineWidth: CGFloat = 3
+    private let fontScaleFactor: CGFloat = 0.75
     
-    func fontSize(for size: CGSize) -> CGFloat {
+    private func fontSize(for size: CGSize) -> CGFloat {
         min(size.width, size.height) * fontScaleFactor
     }
 }
