@@ -14,15 +14,23 @@ struct EmojiMemoryGameView: View {
     
     // 不能添加访问控制，系统会调用
     var body: some View {
-        // 引用类型可能造成循环引用，但 self 是值类型
-        Grid(viewModel.cards) { card in
-            CardView(card: card).onTapGesture {
-                self.viewModel.choose(card: card)
+        VStack() {
+            // 引用类型可能造成循环引用，但 self 是值类型
+            Grid(viewModel.cards) { card in
+                CardView(card: card).onTapGesture {
+                    self.viewModel.choose(card: card)
+                }
+                .padding(5)
             }
-            .padding(5)
+            .padding()
+            .foregroundColor(Color.orange)
+            
+            Button(action: {
+                withAnimation(.easeInOut(duration: 1.0)) {
+                    self.viewModel.restGame()
+                }
+            }, label: { Text("New Game") })
         }
-        .padding()
-        .foregroundColor(Color.orange)
     }
 }
 
