@@ -18,7 +18,7 @@ struct EmojiMemoryGameView: View {
             // 引用类型可能造成循环引用，但 self 是值类型
             Grid(viewModel.cards) { card in
                 CardView(card: card).onTapGesture {
-                    withAnimation(.linear(duration: 1.0)) {
+                    withAnimation(.linear(duration: 0.75)) {
                         self.viewModel.choose(card: card)
                     }
                 }
@@ -28,7 +28,7 @@ struct EmojiMemoryGameView: View {
             .foregroundColor(Color.orange)
             
             Button(action: {
-                withAnimation(.easeInOut(duration: 1.0)) {
+                withAnimation(.easeInOut) {
                     self.viewModel.restGame()
                 }
             }, label: { Text("New Game") })
