@@ -18,7 +18,9 @@ struct EmojiMemoryGameView: View {
             // 引用类型可能造成循环引用，但 self 是值类型
             Grid(viewModel.cards) { card in
                 CardView(card: card).onTapGesture {
-                    self.viewModel.choose(card: card)
+                    withAnimation(.linear(duration: 1.0)) {
+                        self.viewModel.choose(card: card)
+                    }
                 }
                 .padding(5)
             }
@@ -58,6 +60,7 @@ struct CardView: View {
             }
             .cardify(isFaceUp: card.isFaceUp)
 //            .modifier(Cardify(isFaceUp: card.isFaceUp))
+            .transition(AnyTransition.scale)
         }
     }
     
