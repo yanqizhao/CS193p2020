@@ -69,11 +69,14 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         var content: CardContent
         var id: Int
         
-        
+        // 倒计时时间总数
         var bonusTimeLimit: TimeInterval = 6
+        // 开始消耗时间的时间戳
         var lastFaceUpDate: Date?
+        // 上次消耗掉的时间
         var pastFaceUpTime: TimeInterval = 0
         
+        // 已消耗的时间
         private var faceUpTime: TimeInterval {
             if let lastFaceUpDate = self.lastFaceUpDate {
                 return pastFaceUpTime + Date().timeIntervalSince(lastFaceUpDate)
@@ -82,28 +85,34 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             }
         }
         
+        // 还剩的时间
         var bonusTimeRemaining: TimeInterval {
             max(0, bonusTimeLimit - faceUpTime)
         }
         
+        // 还剩时间的百分比
         var bonusRemaining: Double {
             (bonusTimeLimit > 0 && bonusTimeRemaining > 0) ? bonusTimeRemaining/bonusTimeLimit : 0
         }
         
+        //
         var hasEarnedBonus: Bool {
             isMatched && bonusTimeRemaining > 0
         }
         
+        // 是否在消耗时间
         var isConsumingBonusTime: Bool {
             isFaceUp && !isMatched && bonusTimeRemaining > 0
         }
         
+        // 开始消耗时间的时间戳
         private mutating func startUsingBonusTime() {
             if isConsumingBonusTime, lastFaceUpDate == nil {
                 lastFaceUpDate = Date()
             }
         }
         
+        // 结束消耗时间的时间戳
         private mutating func stopUsingBonusTime() {
             pastFaceUpTime = faceUpTime
             self.lastFaceUpDate = nil
