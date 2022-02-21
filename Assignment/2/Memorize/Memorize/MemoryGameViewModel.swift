@@ -11,6 +11,9 @@ import SwiftUI
 class MemoryGameViewModel {
     // 类没有逐一成员构造器
     // 成员变量初始化方法：1. 声明(如下) 2. 自定义构造器
+    
+    // 私有可写，公有可读，“玻璃门”
+//    private(set) var model: MemoryGameModel<String>
     private var model: MemoryGameModel<String> = MemoryGameViewModel.createMemoryGameModel()
     
     static func createMemoryGameModel() -> MemoryGameModel<String> {

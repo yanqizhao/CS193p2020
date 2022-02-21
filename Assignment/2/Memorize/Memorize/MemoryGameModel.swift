@@ -27,6 +27,7 @@ struct MemoryGameModel<CardContent> {
     struct Card: Identifiable {
         var isFaceup = true
         var isMatched = false
+        // 不关心的类型用泛型表示
         var content: CardContent
         var id: Int
     }

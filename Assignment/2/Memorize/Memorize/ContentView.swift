@@ -13,7 +13,7 @@ struct ContentView: View {
     var viewModel: MemoryGameViewModel
     
     var body: some View {
-        HStack() {
+        HStack {
             ForEach(viewModel.cards) { card in
                 CardView(card: card).onTapGesture {
                     self.viewModel.choose(card: card)
@@ -34,7 +34,7 @@ struct CardView: View {
     var card: MemoryGameModel<String>.Card
     
     var body: some View {
-        ZStack() {
+        ZStack {
             if(card.isFaceup) {
                 // 圆角尺寸为 10 填充色为白色的圆角矩形
                 RoundedRectangle(cornerRadius: 10).fill(Color.white)

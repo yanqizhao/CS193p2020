@@ -6,10 +6,12 @@
 //  Copyright © 2020 yanqizhao. All rights reserved.
 //
 
+// ViewModel 本质上还是跟 UI 相关的东西
+// 它知道所有的 UI 是如何绘制的
 import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
-    
+    // 私有可写，公有可读，“玻璃门”
 //    private(set) var model: MemoryGame<String>
     
 //    private var model: MemoryGame<String> =
@@ -17,6 +19,7 @@ class EmojiMemoryGame: ObservableObject {
     
     @Published private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
     
+    // 属性 model 初始化时，类的实例对象还没有初始化完成，所以不能调用实例方法，故改为静态方法
     private static func createMemoryGame() -> MemoryGame<String> {
         let emojis = ["👻", "🎃", "🐱"/*, "🦄"*/]
         return MemoryGame<String>(numberOfPairsOfCards: emojis.count) { pairIndex in
@@ -26,6 +29,7 @@ class EmojiMemoryGame: ObservableObject {
     
     // MARK: - Access to the Model
     
+    // 声明该方法后， model 属性就可以完全私有，无需公有可读了
     var cards: Array<MemoryGame<String>.Card> {
         model.cards
     }
